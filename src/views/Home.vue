@@ -5,6 +5,12 @@
   </div>
 </template>
 
+<style type="text/css">
+/*  body {
+    background-color: yellow;
+  }*/
+</style>
+
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
