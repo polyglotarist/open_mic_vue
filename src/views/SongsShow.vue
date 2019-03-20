@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <h1>{{song.title}}</h1>
-    <p>{{song.lyrics}}</p>
-    <div v-for="lines in song.formatted.lyrics">
-      <pre v-for="line in lines">{{ line }}</pre>
+  <div class="songs-show">
+    <div class="container">
+      <h1>{{song.title}}</h1>
+      <!-- <h3>by {{song.artist.name}}</h3> -->
+      <p>{{song.lyrics}}</p>
+      <div v-for="lines in song.formatted.lyrics">
+        <pre v-for="line in lines">{{ line }}</pre>
+      </div>
     </div>
   </div>
 </template>
