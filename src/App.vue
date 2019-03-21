@@ -34,9 +34,11 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/">Home</router-link>
                     </li>
+                        
                     <li class="nav-item">
                         <router-link class="nav-link" to="/songs/new">New</router-link>
                     </li>
+                  
                     <li class="nav-item">
                         <router-link class="nav-link" to="/signup">Sign Up</router-link>
                     </li>

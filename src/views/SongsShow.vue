@@ -2,6 +2,11 @@
   <div class="songs-show">
     <div class="container">
       <h1>{{song.title}}</h1>
+      <router-link class="nav-link" v-bind:to="'/songs/' + song.id + '/edit'">Edit</router-link>
+
+      <h5>Artist: {{ song.artist.name}}</h5>
+      <h5>Category: {{ song.category.name}}</h5>
+
       <!-- <h3>by {{song.artist.name}}</h3> -->
       <p>{{song.lyrics}}</p>
       <div v-for="lines in song.formatted.lyrics">

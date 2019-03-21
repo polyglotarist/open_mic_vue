@@ -14,6 +14,19 @@
         <div>
           Lyrics: <input v-model="newSongLyrics">
         </div>
+        <div>
+          Category: 
+          <select v-model="newCategoryId">
+            <option v-for="category in categories" v-bind:value="category.id">{{ category.name }}</option>
+          </select>
+        </div>
+
+         <div>
+          Artist: 
+          <select v-model="newArtistId">
+            <option v-for="artist in artists" v-bind:value="artist.id">{{ artist.name }}</option>
+          </select>
+        </div>
       
         <input type="submit" value="Create">
         </div>
@@ -32,17 +45,36 @@
     return {
       newSongTitle: "",
       newSongLyrics: "",
-      errors: []
+      newCategoryId: "",
+      newArtistId: "",
+      errors: [],
+      categories: [],
+      artists: [] 
     };
   },
-  created: function() {},
+  created: function() {
+    axios
+      .get("/api/categories")
+      .then(response => {
+        this.categories = response.data;
+      });
+      
+    axios
+      .get("api/artists")
+      .then(response => {
+        this.artists = response.data;
+      });
+
+  },
   methods: {
     submit: function() {
       var params = {
                     title: this.newSongTitle,
                     lyrics: this.newSongLyrics,
+                    artist_id: this.newArtistId,
+                    category_id: this.newCategoryId
                     };
-      axios.post("/api/songs", params)
+      axios.post("/api/songs/", params)
         .then(response => {
           console.log("Song Successfully Created!", response.data);
           this.$router.push("/");
