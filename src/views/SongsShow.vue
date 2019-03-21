@@ -3,6 +3,7 @@
     <div class="container">
       <h1>{{song.title}}</h1>
       <router-link class="nav-link" v-bind:to="'/songs/' + song.id + '/edit'">Edit</router-link>
+      <button v-on:click="destroySong()">Delete</button>
 
       <h5>Artist: {{ song.artist.name}}</h5>
       <h5>Category: {{ song.category.name}}</h5>

@@ -34,7 +34,7 @@
   methods: {
     submit: function() {
       var params = {
-                    title: this.newArtistName,
+                    name: this.newArtistName,
                     };
       axios.post("/api/artists", params)
         .then(response => {
