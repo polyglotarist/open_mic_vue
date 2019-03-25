@@ -9,12 +9,8 @@
     <form v-on:submit.prevent="submit()">
       <div>
         <div>
-          Title: <input v-model="newCatogoryTitle">
+          Name: <input v-model="newCatogoryName">
         </div>
-        <div>
-          Lyrics: <input v-model="newCatogoryLyrics">
-        </div>
-      
         <input type="submit" value="Create">
         </div>
       </form>
@@ -30,8 +26,7 @@
   export default {
   data: function() {
     return {
-      newCatogoryTitle: "",
-      newCatogoryLyrics: "",
+      newCatogoryName: "",
       errors: []
     };
   },
@@ -39,8 +34,7 @@
   methods: {
     submit: function() {
       var params = {
-                    title: this.newCatogoryTitle,
-                    lyrics: this.newCatogoryLyrics,
+                    title: this.newCatogoryName,
                     };
       axios.post("/api/categories", params)
         .then(response => {

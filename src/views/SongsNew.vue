@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div class="songs-new">
     <h1>New Song</h1>
 
@@ -12,20 +12,32 @@
           Title: <input v-model="newSongTitle">
         </div>
         <div>
-          Lyrics: <input v-model="newSongLyrics">
+          Lyrics: <textarea rows="20" cols="40"v-model="newSongLyrics"></textarea>
         </div>
         <div>
           Category: 
           <select v-model="newCategoryId">
-            <option v-for="category in categories" v-bind:value="category.id">{{ category.name }}</option>
+            <option v-for="category in categories" v-bind:value="category.id">
+              {{ category.name }}
+            </option>
           </select>
         </div>
 
          <div>
           Artist: 
           <select v-model="newArtistId">
-            <option v-for="artist in artists" v-bind:value="artist.id">{{ artist.name }}</option>
+            <option v-for="artist in artists" v-bind:value="artist.id">
+              {{ artist.name }}
+            </option>
           </select>
+        </div>
+        <div>
+          ChordsList:
+          <input v-model="selectedChord" placeholder="Am, GM, C#m, etc..."> 
+          <button v-on:click="addChord()">Add Chord</button>
+          <ul  v-for="something in customChords">
+            <li>{{ something }}</li>
+          </ul>
         </div>
       
         <input type="submit" value="Create">
@@ -49,7 +61,10 @@
       newArtistId: "",
       errors: [],
       categories: [],
-      artists: [] 
+      artists: [],
+      chords: [],
+      customChords: [],
+      selectedChord: ""
     };
   },
   created: function() {
@@ -65,6 +80,12 @@
         this.artists = response.data;
       });
 
+    axios
+      .get("api/chords")
+      .then(response => {
+        this.chords = response.data;
+      });
+
   },
   methods: {
     submit: function() {
@@ -72,7 +93,8 @@
                     title: this.newSongTitle,
                     lyrics: this.newSongLyrics,
                     artist_id: this.newArtistId,
-                    category_id: this.newCategoryId
+                    category_id: this.newCategoryId,
+                    chords: this.customChords
                     };
       axios.post("/api/songs/", params)
         .then(response => {
@@ -82,6 +104,9 @@
         .catch(error => {
           this.errors = error.response.data.errors;
         });
+    },
+    addChord: function() {
+      this.customChords.push(this.selectedChord);
     }
   }
   };

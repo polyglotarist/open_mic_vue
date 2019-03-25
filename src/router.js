@@ -12,11 +12,18 @@ import SongsEdit from "./views/SongsEdit.vue";
 import ArtistsIndex from "./views/ArtistsIndex.vue";
 import ArtistsNew from "./views/ArtistsNew.vue";
 import ArtistsShow from "./views/ArtistsShow.vue";
+import ArtistsEdit from "./views/ArtistsEdit.vue";
 
 
 import CategoriesIndex from "./views/CategoriesIndex.vue";
 import CategoriesNew from "./views/CategoriesNew.vue";
 import CategoriesShow from "./views/CategoriesShow.vue";
+import CategoriesEdit from "./views/CategoriesEdit.vue";
+
+import ChordsIndex from "./views/ChordsIndex.vue";
+import ChordsNew from "./views/ChordsNew.vue";
+import ChordsShow from "./views/ChordsShow.vue";
+import ChordsEdit from "./views/ChordsEdit.vue";
 
 
 Vue.use(Router);
@@ -38,9 +45,19 @@ export default new Router({
     { path: "/artists", name: "artists-index", component: ArtistsIndex },
     { path: "/artists/new", name: "artists-new", component: ArtistsNew },
     { path: "/artists/:id", name: "artists-show", component: ArtistsShow },
+    { path: "/artists/:id/edit", name: "artists-edit", component: ArtistsEdit },
+
 
     { path: "/categories", name: "categories-index", component: CategoriesIndex},
     { path: "/categories/new", name: "categories-new", component: CategoriesNew},
-    {path: "/categories/:id", name: "categories-show", component: CategoriesShow}
+    { path: "/categories/:id", name: "categories-show", component: CategoriesShow },
+    { path: "/categories/:id/edit", name: "categories-edit", component: CategoriesEdit },
+
+
+    { path: "/chords", name: "chords-index", component: ChordsIndex },
+    { path: "/chords/new", name: "chords-new", component: ChordsNew },
+    { path: "/chords/:id", name: "chords-show", component: ChordsShow },
+    { path: "/chords/:id/edit", name: "chords-edit", component: ChordsEdit }
+
   ]
 });

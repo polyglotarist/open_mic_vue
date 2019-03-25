@@ -1,6 +1,6 @@
-<template> 
-  <div class="songs-edit">
-    <h1>Edit Song</h1>
+<template>
+  <div class="chords-edit">
+    <h1>Edit Chord</h1>
     
     <ul>
       <li v-for="error in errors">{{ error }}</li>
@@ -8,28 +8,16 @@
 
     <form v-on:submit.prevent="submit()">
       <div>
-        Title: <input v-model="song.title">
+        Note: <input v-model="chord.note">
       </div>
       <div>
-        Lyrics: <input v-model="song.lyrics">
-      </div>
+        Row: <input v-model="chord.row">
+      </div> 
       <div>
-        Chords List: <input v-model="song.chords_list">
-      </div>
+        location: <input v-model="chord.location">
+      </div>  
       <div>
-        Category: 
-        <select v-model="song.category_id">
-          <option v-for="category in categories" v-bind:value="category.id">{{ category.name }}</option>
-        </select>
-      </div>
-
-       <div>
-        Artist: 
-        <select v-model="song.artist_id">
-          <option v-for="artist in artists" v-bind:value="artist.id">
-           {{ artist.name }}
-          </option>
-        </select>
+        song_id: <input v-model="chord.song_id">
       </div>
       <input type="submit" value="Update" class="btn btn-warning">
     </form>
@@ -82,7 +70,6 @@ export default {
       var params = {
                     title: this.song.title,
                     lyrics: this.song.lyrics,
-                    chords_list: this.song.chords_list,
                     artist_id: this.song.artist_id,
                     category_id: this.song.category_id
                     };

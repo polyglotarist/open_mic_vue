@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div class="songs-index">
     <div class="container">
       <table class="table">
@@ -18,13 +18,13 @@
             </td>
             <td>{{song.artist.name}}</td>
             <td>{{song.category.name}} </td>
-          </tr>
+          </tr>  
         </tbody>
       </table>
     </div>             
   </div>
 </template>
-
+ 
 <style>
 </style>
 
