@@ -59,9 +59,7 @@
       errors: [],
       categories: [],
       artists: [],
-      chords: [],
-      customChords: [],
-      newSongChords: ""
+      chords: []
     };
   },
   created: function() {

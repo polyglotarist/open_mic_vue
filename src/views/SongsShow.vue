@@ -1,7 +1,7 @@
 <template> 
   <div class="songs-show">
     <h1>{{song.title}}</h1>
-    <div class="row">
+    <div class="row"> 
       <div class="col-md-5">
 
 
