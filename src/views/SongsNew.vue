@@ -7,42 +7,39 @@
     </ul>
 
     <form v-on:submit.prevent="submit()">
-      <div>
-        <div>
-          Title: <input v-model="newSongTitle">
-        </div>
-        <div>
-          Lyrics: <textarea rows="20" cols="40"v-model="newSongLyrics"></textarea>
-        </div>
-        <div>
-          Category: 
-          <select v-model="newCategoryId">
-            <option v-for="category in categories" v-bind:value="category.id">
-              {{ category.name }}
-            </option>
-          </select>
-        </div>
-
-         <div>
-          Artist: 
-          <select v-model="newArtistId">
-            <option v-for="artist in artists" v-bind:value="artist.id">
-              {{ artist.name }}
-            </option>
-          </select>
-        </div>
-        <div>
-          ChordsList:
-          <input v-model="selectedChord" placeholder="Am, GM, C#m, etc..."> 
-          <button v-on:click="addChord()">Add Chord</button>
-          <ul  v-for="something in customChords">
-            <li>{{ something }}</li>
-          </ul>
-        </div>
-      
-        <input type="submit" value="Create">
-        </div>
-      </form>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control form-control-lg" placeholder="title" autofocus="" v-model="newSongTitle">
+      </div>
+      <div class="form-group">
+        <label>Lyrics</label>
+        <textarea class="form-control form-control-lg" placeholder="lyrics" v-model="newSongLyrics"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Chords</label>
+        <input type="text" class="form-control form-control-lg" placeholder="chords" v-model="newSongChords">
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select class="form-control form-control-lg" v-model="newCategoryId">
+          <option  v-for="category in categories" v-bind:value="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Artist</label>
+        <select class="form-control form-control-lg" v-model="newArtistId">
+          <option v-for="artist in artists" v-bind:value="artist.id">
+            {{ artist.name }}
+          </option>
+        </select>
+      </div>
+      <hr>
+      <div class="form-group action">
+        <button type="submit" class="btn btn-lg btn-primary">Create</button>
+      </div>
+    </form>
 
   </div>
 </template>
@@ -64,7 +61,7 @@
       artists: [],
       chords: [],
       customChords: [],
-      selectedChord: ""
+      newSongChords: ""
     };
   },
   created: function() {
@@ -94,7 +91,7 @@
                     lyrics: this.newSongLyrics,
                     artist_id: this.newArtistId,
                     category_id: this.newCategoryId,
-                    chords: this.customChords
+                    chords_list: this.newSongChords
                     };
       axios.post("/api/songs/", params)
         .then(response => {
@@ -105,9 +102,9 @@
           this.errors = error.response.data.errors;
         });
     },
-    addChord: function() {
-      this.customChords.push(this.selectedChord);
-    }
+    // addChord: function() {
+    //   this.customChords.push(this.selectedChord);
+    // }
   }
   };
 </script>

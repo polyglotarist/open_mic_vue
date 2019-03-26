@@ -36,7 +36,12 @@
                     </li>
                         
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/songs/new">New</router-link>
+                        <router-link class="nav-link" to="/songs/new">New Song</router-link>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/chords/new">New Chord</router-link>
                     </li>
                   
                     <li class="nav-item">
@@ -56,8 +61,9 @@
         <!-- //.container -->
     </nav>
     <!-- //Navigation End -->
-
+    <div class="container">
       <router-view/>
+    </div>
 
       <!-- Footer End -->
       <footer id="footer" class="bg-light footer-light">

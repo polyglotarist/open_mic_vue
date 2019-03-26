@@ -11,8 +11,8 @@
         Title: <input v-model="song.title">
       </div>
       <div>
-        Lyrics: <input v-model="song.lyrics">
-      </div>
+          Lyrics: <textarea rows="20" cols="40" v-model="song.lyrics"></textarea>
+        </div>
       <div>
         Chords List: <input v-model="song.chords_list">
       </div>
@@ -82,7 +82,7 @@ export default {
       var params = {
                     title: this.song.title,
                     lyrics: this.song.lyrics,
-                    chords_list: this.song.chords_list,
+                    chords: this.song.chords_list,
                     artist_id: this.song.artist_id,
                     category_id: this.song.category_id
                     };

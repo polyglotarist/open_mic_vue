@@ -1,29 +1,38 @@
  <template>
    <div class="chords-new">
-     <h1>New Chord</h1>
-
      <ul>
        <li v-for="error in errors">{{ error }}</li>
      </ul>
 
-     <form v-on:submit.prevent="submit()">
-       <div>
-         <div>
-           Note: <input v-model="newChordNote">
-         </div>
-          <div>
-           Row: <input v-model="newChordNote">
-         </div> 
-         <div>
-           Location: <input v-model="newChordNote">
-         </div> 
-         <div>
-           Song_id<input v-model="newSongId">
-         </div>
-         <input type="submit" value="Create">
-         </div>
-       </form>
+     <div class="login">
+       <div class="container">
+         <form v-on:submit.prevent="submit()">
+           <h1>New Chord</h1>
+           <ul>
+             <li class="text-danger" v-for="error in errors">{{ error }}</li>
+           </ul>
+           <div class="form-group">
+             <label>Chord Note:</label>
+             <input type="note" class="form-control" v-model="newChordNote">
+           </div>
+           <div class="form-group">
+             <label>Chord Row:</label>
+             <input type="row" class="form-control" v-model="newChordRow">
+           </div>
+           <div class="form-group">
+             <label>Chord Location:</label>
+             <input type="location" class="form-control" v-model="newChordLocation">
+           </div>
+           <select v-model="newSongId">
+             <option v-for="song in songs" v-bind:value="song.id">
+               {{ song.title }}
+             </option>
+           </select>
 
+           <input type="submit" class="btn btn-primary" value="Create">
+         </form>
+       </div>
+     </div>
    </div>
  </template>
   
@@ -35,11 +44,13 @@
    export default {
    data: function() {
      return {
-       newchordNote: "",
-       newchordRow: "",
-       newLocation: "",
+       newChordNote: "",
+       newChordRow: "",
+       newChordLocation: "",
        newSongId: "",
-       errors: []
+       newSongTitle: "",
+       errors: [],
+       songs: []
      };
    },
    created: function() {
@@ -61,16 +72,22 @@
           this.chords = response.data;
         });
 
+      axios
+        .get("api/songs")
+        .then(response => {
+          this.songs = response.data
+        });
    },
    methods: {
      submit: function() {
        var params = {
-                     note: this.newchordNote,
-                     row: this.newchordRow,
+                     note: this.newChordNote,
+                     row: this.newChordRow,
                      location: this.newChordLocation,
-                     Song_id: this.newSongId
+                     song_id: this.newSongId,
+                     title: this.newSongTitle
                      };
-       axios.post("/api/Chords/", params)
+       axios.post("/api/chords/", params)
          .then(response => {
            console.log("Chord Successfully Created!", response.data);
            this.$router.push("/");

@@ -1,23 +1,43 @@
 <template> 
   <div class="songs-show">
-    <div class="container">
-      <h1>{{song.title}}</h1>
-      <router-link class="nav-link" v-bind:to="'/songs/' + song.id + '/edit'">Edit</router-link>
-      <button v-on:click="destroySong()">Delete</button>
-      <h5>Artist: {{ song.artist.name}}</h5>
-      <h5>Category: {{ song.category.name}}</h5>
-      <h5>Chords: {{ song.chords_list}}</h5>
+    <h1>{{song.title}}</h1>
+    <div class="row">
+      <div class="col-md-5">
 
-      <p>{{song.lyrics}}</p>
-      <div v-for="lines in song.formatted.lyrics">
-        <pre v-for="line in lines">{{ line }}</pre>
+
+        <div>
+          <h5>Artist: {{ song.artist.name}}</h5>
+          <h5>Category: {{ song.category.name}}</h5>
+          <h5>Chords: {{ song.chords_list}}</h5>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 m-2" v-for="chord in song.chords">
+            <img class="img-fluid" :src="'/chord_grids/' + chord.note + '.jpg'">
+          </div>
+        </div>
+        
+        <router-link class="btn btn-lg btn-primary m-2" v-bind:to="'/songs/' + song.id + '/edit'">Edit</router-link>
+        <button class="btn btn-lg btn-primary m-2" v-on:click="destroySong()">Delete</button>
       </div>
+
+      <div class="col-md-7">
+        
+        <div v-for="lines in song.formatted.lyrics">
+          <pre v-for="line in lines">{{ line }}</pre>
+        </div>
+      </div>
+
+
+
     </div>
   </div> 
 </template>
 
-<style>
-
+<style> 
+.chord-grid {
+  width: 90px;
+}
 </style>
 
 <script>
@@ -33,7 +53,8 @@ export default {
               chords_list: "",
               formatted: {
                 lyrics: []
-              }
+              },
+              chords: []
             }
     };
   },
