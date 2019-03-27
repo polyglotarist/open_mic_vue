@@ -5,19 +5,15 @@
         <thead>
           <tr>
             <th scope="col">Artist Name</th>
-            <th scope="col">Artist Song Titles</th>
-            <th scope="col">Song Category</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="artist in filterBy(artists, titleFilter, 'title')">
+          <tr v-for="artist in filterBy(artists, titleFilter, 'name')">
             <td>
-              <router-link v-bind:to="'/artists/'">
+              <router-link v-bind:to="'/artists/' + artist.id">
                 {{artist.name}}
               </router-link>
             </td>
-            <td>{{artist.name}}</td>
-            <td>{{song.title}}</td>
           </tr>
         </tbody>
       </table>

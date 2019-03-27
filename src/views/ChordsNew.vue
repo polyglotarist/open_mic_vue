@@ -4,7 +4,7 @@
        <li v-for="error in errors">{{ error }}</li>
      </ul>
 
-     <div class="login">
+     <div class="login"> 
        <div class="container">
          <form v-on:submit.prevent="submit()">
            <h1>New Chord</h1>

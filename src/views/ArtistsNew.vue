@@ -1,24 +1,27 @@
 <template>
   <div class="artists-new">
-    <h1>New Artist</h1>
-
     <ul>
       <li v-for="error in errors">{{ error }}</li>
     </ul>
 
-    <form v-on:submit.prevent="submit()">
-      <div>
-        <div>
-          Name: <input v-model="newArtistName">
-        </div>
-      
-        <input type="submit" value="Create">
-        </div>
-      </form>
-
-  </div>
+    <div class="login">
+      <div class="container">
+        <form v-on:submit.prevent="submit()">
+          <h1>New Artist</h1>
+          <ul>
+            <li class="text-danger" v-for="error in errors">{{ error }}</li>
+          </ul>
+          <div class="form-group">
+            <label>Artist Name:</label>
+            <input type="name" class="form-control" v-model="newArtistName">
+          </div>
+          <input type="submit" class="btn btn-primary" value="Create">
+        </form>
+      </div>
+    </div> 
+  </div> 
 </template>
-
+ 
 <style>
 </style>
 
@@ -26,20 +29,27 @@
   var axios = require("axios");
   export default {
   data: function() {
-    return {
+    return { 
       newArtistName: "",
-      errors: []
+      errors: [] 
     };
   },
-  created: function() {},
+  created: function() {
+    axios
+      .get("api/artists")
+      .then(response => {
+        this.artists = response.data;
+      });
+  },
+
   methods: {
     submit: function() {
-      var params = {
-                    name: this.newArtistName,
+      var params =  {
+                      name: this.newArtistName
                     };
-      axios.post("/api/artists", params)
+      axios.post("/api/artists/", params)
         .then(response => {
-          console.log("Category Successfully Created!", response.data);
+          console.log("Chord Successfully Created!", response.data);
           this.$router.push("/");
         })
         .catch(error => {

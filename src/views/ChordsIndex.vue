@@ -1,18 +1,20 @@
 <template>
   <div class="chords-index">
     <div class="container">
-      <table class="table">
+      <div class="row">
+        <img v-for="chordName in chordImages" :src="'/chord_grids/' + chordName + '.jpg'">
+      </div>
+      <!-- <table class="table">
         <thead>
           <tr>
             <th scope="col">Chords</th>
-            <th scope="col">Song Title</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="chord in filterBy(chords, noteFilter, 'note')">
+          <tr v-for="chord in filterBy(chords, titleFilter, 'note')">
             <td>
-              <router-link v-bind:to="'/chords/' + chord.id">
-                {{song.chords_list}}
+              <router-link v-bind:to="'/chord_grids/'">
+                <img class="img-fluid" :src="'/chord_grids/' + chord + '.jpg'">
               </router-link>
             </td>
           </tr>
@@ -24,7 +26,7 @@
             </td> 
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>             
   </div>
 </template>
@@ -43,7 +45,8 @@ export default {
       currentSong: {},
       chords: [],
       currentChord: {},
-      noteFilter: ''
+      noteFilter: '',
+      chordImages: ['A', 'Am', 'C', 'D', 'Dm', 'E', 'Em', 'E9', 'F', 'G']
     };
   },
   created: function() {

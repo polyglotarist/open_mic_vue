@@ -4,24 +4,20 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
-            <th scope="col">Category</th>
+            <th scope="col">Category Name</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="categorie in filterBy(categories, titleFilter, 'title')">
+          <tr v-for="category in filterBy(categories, titleFilter, 'name')">
             <td>
-              <router-link v-bind:to="'/categories/' + categorie.id">
-                {{categorie.title}}
+              <router-link v-bind:to="'/categories/' + category.id">
+                {{category.name}}
               </router-link>
             </td>
-            <td>{{categorie.categorie.name}}</td>
-            <td>{{categorie.category.name}} </td>
           </tr>
         </tbody>
       </table>
-    </div>             
+    </div>              
   </div>
 </template>
 

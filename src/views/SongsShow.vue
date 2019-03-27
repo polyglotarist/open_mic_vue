@@ -2,7 +2,7 @@
   <div class="songs-show">
     <h1>{{song.title}}</h1>
     <div class="row"> 
-      <div class="col-md-5">
+      <div class="col-md-5"> 
 
 
         <div>
@@ -11,9 +11,9 @@
           <h5>Chords: {{ song.chords_list}}</h5>
         </div>
 
-        <div class="row">
-          <div class="col-md-4 m-2" v-for="chord in song.chords">
-            <img class="img-fluid" :src="'/chord_grids/' + chord.note + '.jpg'">
+        <div class="row"> 
+          <div class="col-md-4 m-2" v-for="chord in song.chords_list.split(' ')">
+            <img class="img-fluid" :src="'/chord_grids/' + chord + '.jpg'">
           </div>
         </div>
         

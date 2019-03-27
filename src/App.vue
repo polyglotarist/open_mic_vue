@@ -6,7 +6,7 @@
             <div class="row align-items-center h-100 justify-content-center">
                 <div class="col-lg-9 text-center">
                     <h2 class="font-alt font-w-600 letter-spacing-2 m-0 mt-3 opacity-9-5 text-uppercase text-black title-sm-extra-large-2 title-extra-large-4">Open Mic</h2>
-                    <span class="d-block font-alt mt-2 opacity-9-5 text-black title-sm-extra-large title-extra-large-3"></span>
+                    <span class="d-block font-alt mt-2 opacity-9-5 text-black title-sm-extra-large title-extra-large-3"></span> 
                 </div>
                 <!-- //.col-lg-9 -->
             </div>
@@ -23,16 +23,25 @@
             <div class="navbar-header d-lg-none">
                 <a class="navbar-brand page-scroll" href="#page-top"></a>
                 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-berg" aria-controls="navbar-berg" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-berg" aria-controls="navbar-berg" aria-expanded="false" aria-label="Toggle navigation"> 
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> 
             </div>
             <!-- //.navbar-header -->
             
             <div class="navbar-collapse collapse justify-content-center" id="navbar-berg">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/">Home</router-link>
+                        <router-link class="nav-link" to="/">Songs</router-link>
+                    </li>
+                   <!--  <li class="nav-item">
+                        <router-link class="nav-link" to="/artists">Artists</router-link>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <router-link class="nav-link" to="/categories">Categories</router-link>
+                    </li> -->
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/chords">Chords Chart</router-link>
                     </li>
                         
                     <li class="nav-item">
@@ -42,6 +51,12 @@
 
                     <li class="nav-item">
                         <router-link class="nav-link" to="/chords/new">New Chord</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/artists/new">New Artist</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/categories/new">New Category</router-link>
                     </li>
                   
                     <li class="nav-item">

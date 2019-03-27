@@ -1,6 +1,6 @@
 <template>
   <div class="categories-new">
-    <h1>New Category</h1>
+    <h1>Category</h1>
 
     <ul>
       <li v-for="error in errors">{{ error }}</li>
@@ -9,7 +9,7 @@
     <form v-on:submit.prevent="submit()">
       <div>
         <div>
-          Title: <input v-model="newCategoryName">
+          Name: <input v-model="newCategoryName">
         </div>
         <input type="submit" value="Create">
         </div>
@@ -34,7 +34,7 @@
   methods: {
     submit: function() {
       var params = {
-                    title: this.newCategoryName,
+                    name: this.newCategoryName,
                     };
       axios.post("/api/categories", params)
         .then(response => {

@@ -1,5 +1,5 @@
 <template> 
-  <div class="songs-edit">
+  <div class="songs-edit"> 
     <h1>Edit Song</h1>
     
     <ul>
@@ -50,6 +50,7 @@ export default {
                 id: "",
                 title: "",
                 lyrics: "",
+                chords_list: "",
                 artist_id: "",
                 category_id: ""
               },
@@ -77,12 +78,12 @@ export default {
         this.artists = response.data;
       });
   },
-  methods: {
+  methods: {  
     submit: function() {
       var params = {
                     title: this.song.title,
                     lyrics: this.song.lyrics,
-                    chords: this.song.chords_list,
+                    chords_list: this.song.chords_list,
                     artist_id: this.song.artist_id,
                     category_id: this.song.category_id
                     };

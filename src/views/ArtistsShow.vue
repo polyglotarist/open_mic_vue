@@ -1,7 +1,19 @@
 <template>
-  <div class="artists-new">
-    <h1>New Artist</h1>
+  <div class="artists-show">
+    <h1>{{artist.name}}</h1>
+    <div class="row"></div>
+      <div class="col-md-5">
+        <div>
+          <h5>Songs: {{song.title}}</h5>
+          <h5>Categories: {{category.title}}</h5>
+        </div>
 
+        <div class="row">
+          <div class="col-md-4 m-2" v-for="song in songs">
+            {{song.title}}
+          </div>
+        </div>
+      </div>
     <ul>
       <li v-for="error in errors">{{ error }}</li>
     </ul>
@@ -9,7 +21,7 @@
     <form v-on:submit.prevent="submit()">
       <div>
         <div>
-          Title: <input v-model="newAtristName">
+          Name: <input v-model="newAtristName">
         </div>
         <input type="submit" value="Create">
         </div>
