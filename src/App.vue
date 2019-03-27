@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="main-area">
     <!-- Section - Home Start -->
     <section id="home" class="home-bg-static bg-cover bg-gray-dark bg-overlay-black-5 w-100">
         <div class="container h-100">
@@ -76,19 +76,19 @@
         <!-- //.container -->
     </nav>
     <!-- //Navigation End -->
-    <div class="container">
+    <div class="container main-area">
       <router-view/>
     </div>
 
       <!-- Footer End -->
-      <footer id="footer" class="bg-light footer-light">
+      <!-- <footer id="footer" class="bg-light footer-light">
         <div class="container container-1000">
           <div class="row">
             <div class="col-lg-3">
             </div>
           </div>
         </div>
-      </footer>
+      </footer> -->
   </div>
 </template>
 

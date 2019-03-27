@@ -1,38 +1,45 @@
  <template>
    <div class="chords-new">
-     <ul>
-       <li v-for="error in errors">{{ error }}</li>
-     </ul>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-10 offset-1">
+         <ul>
+           <li v-for="error in errors">{{ error }}</li>
+         </ul>
 
-     <div class="login"> 
-       <div class="container">
-         <form v-on:submit.prevent="submit()">
-           <h1>New Chord</h1>
-           <ul>
-             <li class="text-danger" v-for="error in errors">{{ error }}</li>
-           </ul>
-           <div class="form-group">
-             <label>Chord Note:</label>
-             <input type="note" class="form-control" v-model="newChordNote">
-           </div>
-           <div class="form-group">
-             <label>Chord Row:</label>
-             <input type="row" class="form-control" v-model="newChordRow">
-           </div>
-           <div class="form-group">
-             <label>Chord Location:</label>
-             <input type="location" class="form-control" v-model="newChordLocation">
-           </div>
-           <select v-model="newSongId">
-             <option v-for="song in songs" v-bind:value="song.id">
-               {{ song.title }}
-             </option>
-           </select>
+         <div class="login"> 
+           <div class="container">
+             <form v-on:submit.prevent="submit()">
+               <h1>New Chord</h1>
+               <ul>
+                 <li class="text-danger" v-for="error in errors">{{ error }}</li>
+               </ul>
+               <div class="form-group">
+                 <label>Chord Note:</label>
+                 <input type="note" class="form-control" v-model="newChordNote">
+               </div>
+               <div class="form-group">
+                 <label>Chord Row:</label>
+                 <input type="row" class="form-control" v-model="newChordRow">
+               </div>
+               <div class="form-group">
+                 <label>Chord Location:</label>
+                 <input type="location" class="form-control" v-model="newChordLocation">
+               </div>
+               <div class="form-group">
+                 <label>Song:</label>
+                 <select class="form-control form-control-lg" v-model="newSongId">
+                   <option v-for="song in songs" v-bind:value="song.id">
+                     {{ song.title }}
+                   </option>
+                 </select>
+               </div>
 
-           <input type="submit" class="btn btn-primary" value="Create">
-         </form>
-       </div>
-     </div>
+               <input type="submit" class="btn btn-primary" value="Create">
+             </form>
+           </div>
+         </div>
+      </div>
+    </div>
    </div>
  </template>
   

@@ -1,17 +1,21 @@
 <template>
   <div class="artists-edit">
-    <h1>Edit Artist</h1>
-    
-    <ul>
-      <li v-for="error in errors">{{ error }}</li>
-    </ul>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-10 offset-1">
+        <h1>Edit Artist</h1>
+        
+        <ul>
+          <li v-for="error in errors">{{ error }}</li>
+        </ul>
 
-    <form v-on:submit.prevent="submit()">
-      <div>
-        Name: <input v-model="artist.name">
+        <form v-on:submit.prevent="submit()">
+          <div>
+            Name: <input v-model="artist.name">
+          </div>
+          <input type="submit" value="Update" class="btn btn-warning">
+        </form>
       </div>
-      <input type="submit" value="Update" class="btn btn-warning">
-    </form>
+    </div>
   </div>
 </template>
 

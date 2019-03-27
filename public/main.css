@@ -1,0 +1,10 @@
+body, div#app {
+  background-image: url('/backgrounds/husk_@2x.png');
+}
+
+.main-area {
+  background-color: white;
+  margin-top: 30px;
+  padding: 40px;
+  min-height: 550px;
+}

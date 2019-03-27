@@ -1,38 +1,54 @@
 <template> 
   <div class="songs-edit"> 
-    <h1>Edit Song</h1>
-    
-    <ul>
-      <li v-for="error in errors">{{ error }}</li>
-    </ul>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-10 offset-1">
+        <h1>Edit Song</h1>
+        
+        <ul>
+          <li v-for="error in errors">{{ error }}</li>
+        </ul>
 
-    <form v-on:submit.prevent="submit()">
-      <div>
-        Title: <input v-model="song.title">
-      </div>
-      <div>
-          Lyrics: <textarea rows="20" cols="40" v-model="song.lyrics"></textarea>
-        </div>
-      <div>
-        Chords List: <input v-model="song.chords_list">
-      </div>
-      <div>
-        Category: 
-        <select v-model="song.category_id">
-          <option v-for="category in categories" v-bind:value="category.id">{{ category.name }}</option>
-        </select>
-      </div>
+        <form v-on:submit.prevent="submit()">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control form-control-lg" placeholder="title" autofocus="" v-model="song.title">
+          </div>
 
-       <div>
-        Artist: 
-        <select v-model="song.artist_id">
-          <option v-for="artist in artists" v-bind:value="artist.id">
-           {{ artist.name }}
-          </option>
-        </select>
+          <div class="form-group">
+            <label>Lyrics</label>
+            <textarea class="form-control form-control-lg" rows="20" cols="40" placeholder="lyrics" v-model="song.lyrics"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Chords</label>
+            <input type="text" class="form-control form-control-lg" placeholder="chords" v-model="song.chords_list">
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control form-control-lg" v-model="song.category_id">
+              <option  v-for="category in categories" v-bind:value="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Artist</label>
+            <select class="form-control form-control-lg" v-model="song.artist_id">
+              <option v-for="artist in artists" v-bind:value="artist.id">
+                {{ artist.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group action">
+            <button type="submit" class="btn btn-lg btn-primary">Update</button>
+          </div>
+        </form>
+        
       </div>
-      <input type="submit" value="Update" class="btn btn-warning">
-    </form>
+    </div>
   </div>
 </template>
 

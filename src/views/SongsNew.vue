@@ -1,45 +1,51 @@
 <template> 
   <div class="songs-new">
-    <h1>New Song</h1>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-10 offset-1">
+        <h1>New Song</h1>
 
-    <ul>
-      <li v-for="error in errors">{{ error }}</li>
-    </ul>
+        <ul>
+          <li v-for="error in errors">{{ error }}</li>
+        </ul>
 
-    <form v-on:submit.prevent="submit()">
-      <div class="form-group">
-        <label>Title</label>
-        <input type="text" class="form-control form-control-lg" placeholder="title" autofocus="" v-model="newSongTitle">
+        <form v-on:submit.prevent="submit()">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control form-control-lg" placeholder="title" autofocus="" v-model="newSongTitle">
+          </div>
+          <div class="form-group">
+            <label>Lyrics</label>
+            <textarea class="form-control form-control-lg" placeholder="lyrics" v-model="newSongLyrics"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Chords</label>
+            <input type="text" class="form-control form-control-lg" placeholder="chords" v-model="newSongChords">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control form-control-lg" v-model="newCategoryId">
+              <option  v-for="category in categories" v-bind:value="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Artist</label>
+            <select class="form-control form-control-lg" v-model="newArtistId">
+              <option v-for="artist in artists" v-bind:value="artist.id">
+                {{ artist.name }}
+              </option>
+            </select>
+          </div>
+          <hr>
+          <div class="form-group action">
+            <button type="submit" class="btn btn-lg btn-primary">Create</button>
+          </div>
+        </form>
+        
       </div>
-      <div class="form-group">
-        <label>Lyrics</label>
-        <textarea class="form-control form-control-lg" placeholder="lyrics" v-model="newSongLyrics"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Chords</label>
-        <input type="text" class="form-control form-control-lg" placeholder="chords" v-model="newSongChords">
-      </div>
-      <div class="form-group">
-        <label>Category</label>
-        <select class="form-control form-control-lg" v-model="newCategoryId">
-          <option  v-for="category in categories" v-bind:value="category.id">
-            {{ category.name }}
-          </option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Artist</label>
-        <select class="form-control form-control-lg" v-model="newArtistId">
-          <option v-for="artist in artists" v-bind:value="artist.id">
-            {{ artist.name }}
-          </option>
-        </select>
-      </div>
-      <hr>
-      <div class="form-group action">
-        <button type="submit" class="btn btn-lg btn-primary">Create</button>
-      </div>
-    </form>
+    </div>
+
 
   </div>
 </template>

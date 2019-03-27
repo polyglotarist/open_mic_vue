@@ -1,22 +1,26 @@
 <template>
   <div class="categories-new">
-    <ul>
-      <li v-for="error in errors">{{ error }}</li>
-    </ul>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-10 offset-1">
+        <ul>
+          <li v-for="error in errors">{{ error }}</li>
+        </ul>
 
-    <div class="login">
-      <div class="container">
-        <form v-on:submit.prevent="submit()">
-          <h1>New Category</h1>
-          <ul>
-            <li class="text-danger" v-for="error in errors">{{ error }}</li>
-          </ul>
-          <div class="form-group">
-            <label>Category Name:</label>
-            <input type="name" class="form-control" v-model="newCategoryName">
+        <div class="login">
+          <div class="container">
+            <form v-on:submit.prevent="submit()">
+              <h1>New Category</h1>
+              <ul>
+                <li class="text-danger" v-for="error in errors">{{ error }}</li>
+              </ul>
+              <div class="form-group">
+                <label>Category Name:</label>
+                <input type="name" class="form-control" v-model="newCategoryName">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Create">
+            </form>
           </div>
-          <input type="submit" class="btn btn-primary" value="Create">
-        </form>
+        </div>
       </div>
     </div>
   </div> 
