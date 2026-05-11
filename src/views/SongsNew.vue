@@ -5,7 +5,7 @@
         <h1>New Song</h1>
 
         <ul>
-          <li v-for="error in errors">{{ error }}</li>
+          <li v-for="error in errors" :key="error">{{ error }}</li>
         </ul>
 
         <form v-on:submit.prevent="submit()">
@@ -24,7 +24,7 @@
           <div class="form-group">
             <label>Category</label>
             <select class="form-control form-control-lg" v-model="newCategoryId">
-              <option  v-for="category in categories" v-bind:value="category.id">
+              <option v-for="category in categories" :key="category.id" v-bind:value="category.id">
                 {{ category.name }}
               </option>
             </select>
@@ -32,7 +32,7 @@
           <div class="form-group">
             <label>Artist</label>
             <select class="form-control form-control-lg" v-model="newArtistId">
-              <option v-for="artist in artists" v-bind:value="artist.id">
+              <option v-for="artist in artists" :key="artist.id" v-bind:value="artist.id">
                 {{ artist.name }}
               </option>
             </select>
@@ -76,13 +76,13 @@
       });
       
     axios
-      .get("api/artists")
+      .get("/api/artists")
       .then(response => {
         this.artists = response.data;
       });
 
     axios
-      .get("api/chords")
+      .get("/api/chords")
       .then(response => {
         this.chords = response.data;
       });

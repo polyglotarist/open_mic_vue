@@ -8,7 +8,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="artist in filterBy(artists, titleFilter, 'name')">
+          <tr v-for="artist in filterBy(artists, titleFilter, 'name')" :key="artist.id">
             <td>
               <router-link v-bind:to="'/artists/' + artist.id">
                 {{artist.name}}

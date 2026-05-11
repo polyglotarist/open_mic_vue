@@ -2,7 +2,7 @@
   <div class="chords-index">
     <div class="container">
       <div class="row">
-        <img v-for="chordName in chordImages" :src="'/chord_grids/' + chordName + '.jpg'">
+        <img v-for="chordName in chordImages" :key="chordName" :src="'/chord_grids/' + chordName + '.jpg'">
       </div>
       <!-- <table class="table">
         <thead>
@@ -51,7 +51,7 @@ export default {
   },
   created: function() {
     axios
-      .get("api/songs")
+      .get("/api/songs")
       .then(response => {
         this.songs = response.data
       });

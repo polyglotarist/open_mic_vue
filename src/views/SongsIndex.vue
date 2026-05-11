@@ -10,7 +10,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="song in filterBy(songs, titleFilter, 'title')">
+          <tr v-for="song in filterBy(songs, titleFilter, 'title')" :key="song.id">
             <td>
               <router-link v-bind:to="'/songs/' + song.id">
                 {{song.title}}

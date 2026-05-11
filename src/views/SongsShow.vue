@@ -12,7 +12,7 @@
         </div>
 
         <div class="row"> 
-          <div class="col-md-4 m-2" v-for="chord in song.chords_list.split(' ')">
+          <div class="col-md-4 m-2" v-for="chord in song.chords_list.split(' ')" :key="chord">
             <img class="img-fluid" :src="'/chord_grids/' + chord + '.jpg'">
           </div>
         </div>
@@ -23,8 +23,8 @@
 
       <div class="col-md-7">
         
-        <div v-for="lines in song.formatted.lyrics">
-          <pre v-for="line in lines">{{ line }}</pre>
+        <div v-for="(lines, index) in song.formatted.lyrics" :key="index">
+          <pre v-for="(line, i) in lines" :key="i">{{ line }}</pre>
         </div>
       </div>
 
@@ -54,7 +54,9 @@ export default {
               formatted: {
                 lyrics: []
               },
-              chords: []
+              chords: [],
+              artist: { name: "" },
+              category: { name: "" }
             }
     };
   },

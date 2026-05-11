@@ -5,7 +5,7 @@
         <h1>Edit Artist</h1>
         
         <ul>
-          <li v-for="error in errors">{{ error }}</li>
+          <li v-for="error in errors" :key="error">{{ error }}</li>
         </ul>
 
         <form v-on:submit.prevent="submit()">
@@ -38,7 +38,7 @@ export default {
   },
   created: function() {
     axios
-      .get("/api/artists" + this.$route.params.id)
+      .get("/api/artists/" + this.$route.params.id)
       .then(response => {
         this.artist = response.data;
       });
@@ -49,11 +49,11 @@ export default {
                       name: this.artist.name
                     };
       axios
-      .patch("/api/artists/" + $route.params.id, params)
+      .patch("/api/artists/" + this.$route.params.id, params)
       .then(response => {
-        this.$router.push("/artists" + this.artist.id);
+        this.$router.push("/artists/" + this.artist.id);
       }).catch(error =>{
-        this.errors = errors.response.data.errors;
+        this.errors = error.response.data.errors;
       });
     }
   }

@@ -8,7 +8,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="category in filterBy(categories, titleFilter, 'name')">
+          <tr v-for="category in filterBy(categories, titleFilter, 'name')" :key="category.id">
             <td>
               <router-link v-bind:to="'/categories/' + category.id">
                 {{category.name}}

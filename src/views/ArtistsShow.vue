@@ -1,32 +1,21 @@
 <template>
   <div class="artists-show">
-    <h1>{{artist.name}}</h1>
-    <div class="row"></div>
-      <div class="col-md-5">
-        <div>
-          <h5>Songs: {{song.title}}</h5>
-          <h5>Categories: {{category.title}}</h5>
-        </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1>{{ artist.name }}</h1>
 
-        <div class="row">
-          <div class="col-md-4 m-2" v-for="song in songs">
-            {{song.title}}
-          </div>
-        </div>
+        <router-link class="btn btn-warning m-2" :to="'/artists/' + artist.id + '/edit'">Edit</router-link>
+        <button class="btn btn-danger m-2" v-on:click="destroyArtist()">Delete</button>
+
+        <h3 class="mt-4">Songs</h3>
+        <div v-if="songs.length === 0">No songs yet.</div>
+        <ul class="list-group">
+          <li class="list-group-item" v-for="song in songs" :key="song.id">
+            <router-link :to="'/songs/' + song.id">{{ song.title }}</router-link>
+          </li>
+        </ul>
       </div>
-    <ul>
-      <li v-for="error in errors">{{ error }}</li>
-    </ul>
-
-    <form v-on:submit.prevent="submit()">
-      <div>
-        <div>
-          Name: <input v-model="newAtristName">
-        </div>
-        <input type="submit" value="Create">
-        </div>
-      </form>
-
+    </div>
   </div>
 </template>
 
@@ -34,29 +23,32 @@
 </style>
 
 <script>
-  var axios = require("axios");
-  export default {
+var axios = require("axios");
+export default {
   data: function() {
     return {
-      newArtistName: "",
-      errors: []
+      artist: { id: "", name: "" },
+      songs: []
     };
   },
-  created: function() {},
+  created: function() {
+    var id = this.$route.params.id;
+    axios.get("/api/artists/" + id)
+      .then(response => {
+        this.artist = response.data;
+      });
+    axios.get("/api/songs")
+      .then(response => {
+        this.songs = response.data.filter(s => s.artist_id == id);
+      });
+  },
   methods: {
-    submit: function() {
-      var params = {
-                    name: this.newArtistName,
-                    };
-      axios.post("/api/artists", params)
+    destroyArtist: function() {
+      axios.delete("/api/artists/" + this.artist.id)
         .then(response => {
-          console.log("Artist Successfully Created!", response.data);
-          this.$router.push("/");
-        })
-        .catch(error => {
-          this.errors = error.response.data.errors;
+          this.$router.push("/artists");
         });
     }
   }
-  };
+};
 </script>

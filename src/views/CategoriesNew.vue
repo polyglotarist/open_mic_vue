@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-6 offset-md-3 col-10 offset-1">
         <ul>
-          <li v-for="error in errors">{{ error }}</li>
+          <li v-for="error in errors" :key="error">{{ error }}</li>
         </ul>
 
         <div class="login">
@@ -11,7 +11,7 @@
             <form v-on:submit.prevent="submit()">
               <h1>New Category</h1>
               <ul>
-                <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                <li class="text-danger" v-for="error in errors" :key="error">{{ error }}</li>
               </ul>
               <div class="form-group">
                 <label>Category Name:</label>
@@ -40,7 +40,7 @@
   },
   created: function() {
     axios
-      .get("api/categories")
+      .get("/api/categories")
       .then(response => {
         this.categories = response.data;
       });
